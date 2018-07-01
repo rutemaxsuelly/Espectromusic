@@ -6,6 +6,7 @@ public class InstaciarCubos : MonoBehaviour {
 
     public GameObject _SampleCuberPrefab;
     GameObject[] _sampleCube = new GameObject[512];
+
     public float _maxscale;
 
     // Use this for initialization
@@ -18,8 +19,8 @@ public class InstaciarCubos : MonoBehaviour {
             _instanceSampleCube.transform.position = this.transform.position;
             _instanceSampleCube.transform.parent = this.transform;
             _instanceSampleCube.name = "SampleCube" + i;
-            this.transform.eulerAngles = new Vector3(0,-0.703125f * i, 0);
-            _instanceSampleCube.transform.position = Vector3.forward * 100;
+            this.transform.position = new Vector3(i % 50 * 15, 0, i/50 * 20);
+            _instanceSampleCube.transform.position = Vector3.forward * 10;
             _sampleCube[i] = _instanceSampleCube;
         }
 
@@ -30,7 +31,7 @@ public class InstaciarCubos : MonoBehaviour {
     {
         for (int i = 0; i < 512; i++){
             if (_sampleCube != null) { 
-                _sampleCube[i].transform.localScale = new Vector3 (10,(AudioPeer._sample[i] * _maxscale)+ 2 , 10);
+                _sampleCube[i].transform.localScale = new Vector3 (10,(AudioPeer._samples[i] * _maxscale)+ 2 , 10);
             }
 
         }

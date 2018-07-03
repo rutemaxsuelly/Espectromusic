@@ -7,7 +7,7 @@ using UnityEngine;
 public class AudioPeer : MonoBehaviour
 {
     AudioSource _audioSource;
-    public static float[] _sample = new float[512];
+    public static float[] _samples = new float[512];
 
     // Use this for initialization
     void Start()
@@ -23,7 +23,7 @@ public class AudioPeer : MonoBehaviour
 
     void GetSpectrumAudioSource()
     {
-        _audioSource.GetSpectrumData(_sample, 0, FFTWindow.Blackman);
+        _audioSource.GetSpectrumData(_samples, 0, FFTWindow.Blackman);
     }
 
 

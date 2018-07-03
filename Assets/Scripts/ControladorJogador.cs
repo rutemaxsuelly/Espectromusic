@@ -13,7 +13,7 @@ public class ControladorJogador : MonoBehaviour {
 	//Fator de Velocidade usado para movimentações
 	public float speedFactor = 100f;
 	//Velocidade máxma do jogador
-	public float maxSpeedXZ = 5f;
+	public float audiofactor = 0.001f;
 	//Velocidade máxma do jogador
 	public float maxSpeedJump = 10f;
 
@@ -60,8 +60,8 @@ public class ControladorJogador : MonoBehaviour {
 	//Atualizações dinâmicas
 	void Update () {
 		//Toca uma nota de acordo com a magnitude da velocidade
-		float pitch = GetPitch(rb.velocity.sqrMagnitude);
-		LibPD.SendFloat ("bounce", pitch);
+		float pitch = GetPitch(rb.velocity.sqrMagnitude * audiofactor);
+		LibPD.SendFloat ("numero", pitch);
 	}
 
 	//Retorna um float calculado com base na frequencia basica, aceleração e escala

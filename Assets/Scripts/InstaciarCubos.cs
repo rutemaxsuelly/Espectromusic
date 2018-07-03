@@ -19,7 +19,8 @@ public class InstaciarCubos : MonoBehaviour {
             _instanceSampleCube.transform.position = this.transform.position;
             _instanceSampleCube.transform.parent = this.transform;
             _instanceSampleCube.name = "SampleCube" + i;
-            this.transform.position = new Vector3(i % 10 * 5, 0, i / 5 * 8); 
+           // this.transform.position = new Vector3(i % 10 * 5, 0, i / 5 * 8);
+            this.transform.position = new Vector3(i % 10 * 5, -5, i / 5 * 9);
             _instanceSampleCube.transform.position = Vector3.forward * 6;
             _sampleCube[i] = _instanceSampleCube;
         }

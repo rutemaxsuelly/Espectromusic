@@ -4,16 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class Level_Script : MonoBehaviour {
 
-      public void LoadScene ( string nome){
-
-        SceneManager.LoadScene(nome);
-    }
-
-    public void QuitGame()
+    void Start()
     {
-
-        Application.Quit();
-
+     //   Debug.Log("LoadSceneB");
     }
-	
+
+    public void LoadB(int sceneANumber)
+    {
+        Debug.Log("sceneBuildIndex to load: " + sceneANumber);
+        SceneManager.LoadScene(sceneANumber);
+    }
+
+    public void FecharJogo()
+    {
+        Application.Quit();
+    }
+
 }

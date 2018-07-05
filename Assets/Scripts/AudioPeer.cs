@@ -11,7 +11,7 @@ public class AudioPeer : MonoBehaviour
 
     //Microphone input
     public AudioClip _audioClip;
-    public bool _useMicrophone;
+    public bool _useMicrophone = true;
     public string _selectedDevice;
 
     // Use this for initialization
@@ -25,7 +25,8 @@ public class AudioPeer : MonoBehaviour
             if (Microphone.devices.Length > 0)
             {
                 _selectedDevice = Microphone.devices[0].ToString();
-                _audioSource.clip = Microphone.Start(_selectedDevice, true, 100, AudioSettings.outputSampleRate);
+
+                _audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
             }
             else
             {

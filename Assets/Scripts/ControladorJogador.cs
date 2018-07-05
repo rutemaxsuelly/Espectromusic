@@ -41,9 +41,11 @@ public class ControladorJogador : MonoBehaviour {
 		float jump = Input.GetAxis("Jump");
 
 		//Atualiza as velociades Horizontal e Vertical
-		float speedH = moveHorizontal * speedFactor * Time.deltaTime;
-		float speedV = moveVertical * speedFactor * Time.deltaTime;
-		rb.velocity = new Vector3 (speedH, rb.velocity.y, speedV);
+		Vector3 direcao = new Vector3 (moveHorizontal, 0, moveVertical);
+		rb.AddForce (direcao * speedFactor);
+		//float speedH = moveHorizontal * speedFactor * Time.deltaTime;
+		//float speedV = moveVertical * speedFactor * Time.deltaTime;
+		//rb.velocity = new Vector3 (speedH, rb.velocity.y, speedV);
 
 		//Aplica uma velocidade vertical se um pulo for executado
 		if (!isJump && jump > 0) {

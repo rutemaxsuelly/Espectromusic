@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -13,6 +14,7 @@ public class AudioPeer : MonoBehaviour
     public AudioClip _audioClip;
     public bool _useMicrophone = true;
     public string _selectedDevice;
+	public AudioMixerGroup audioMixerMaster, audioMixerMicrofone;
 
     // Use this for initialization
     void Start()
@@ -25,7 +27,7 @@ public class AudioPeer : MonoBehaviour
             if (Microphone.devices.Length > 0)
             {
                 _selectedDevice = Microphone.devices[0].ToString();
-
+				_audioSource.outputAudioMixerGroup = audioMixerMicrofone;
                 _audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
             }
             else
@@ -35,6 +37,7 @@ public class AudioPeer : MonoBehaviour
         }
         if (!_useMicrophone)
         {
+			_audioSource.outputAudioMixerGroup = audioMixerMaster;
             _audioSource.clip = _audioClip;
         }
 

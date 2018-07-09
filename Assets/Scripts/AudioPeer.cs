@@ -28,7 +28,7 @@ public class AudioPeer : MonoBehaviour
             {
                 _selectedDevice = Microphone.devices[0].ToString();
 				_audioSource.outputAudioMixerGroup = audioMixerMicrofone;
-                _audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
+                _audioSource.clip = Microphone.Start(_selectedDevice, true, 100, AudioSettings.outputSampleRate);
             }
             else
             {

@@ -8,6 +8,10 @@ using LibPDBinding;
  * Esta classe é responsável por controlar o jogador
  * */
 public class ControladorJogador : MonoBehaviour {
+
+    //Criado para limitar a rotação da câmera para 90º
+    public GameObject referencia;
+
 	//Corpo Rígido associado ao objeto controlado pelo jogador
     public Rigidbody rb;
 	//Fator de Velocidade usado para movimentações

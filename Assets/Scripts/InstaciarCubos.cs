@@ -8,13 +8,13 @@ public class InstaciarCubos : MonoBehaviour {
     GameObject[] _sampleCube = new GameObject[50];
 
     public float _maxscale;
-
+    Material material;
     // Use this for initialization
     void Start()
     {
         for (int i = 0; i < 50; i++)
         {
-
+            material = _SampleCuberPrefab.GetComponent<MeshRenderer>().materials[0];
             GameObject _instanceSampleCube = (GameObject)Instantiate(_SampleCuberPrefab);
             _instanceSampleCube.transform.position = this.transform.position;
             _instanceSampleCube.transform.parent = this.transform;
@@ -29,8 +29,11 @@ public class InstaciarCubos : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+      int variacaoDeCor = 5;
+        Color color = new Color((AudioPeer._samples[0]* variacaoDeCor), (AudioPeer._samples[0]* variacaoDeCor), (AudioPeer._samples[0]* variacaoDeCor));
+        material.SetColor("_EmissionColor", color);
         for (int i = 0; i < 50; i++){
-            if (_sampleCube != null) { 
+            if (_sampleCube != null) {
                 _sampleCube[i].transform.localScale = new Vector3 (4,(AudioPeer._samples[i] * _maxscale)+ 2 ,4);
             }
 
@@ -39,4 +42,3 @@ public class InstaciarCubos : MonoBehaviour {
 
     }
 }
-

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
-
 public class AudioPeer : MonoBehaviour
 {
     AudioSource _audioSource;

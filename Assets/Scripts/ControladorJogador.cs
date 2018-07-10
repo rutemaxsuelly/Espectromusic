@@ -10,6 +10,7 @@ using LibPDBinding;
 public class ControladorJogador : MonoBehaviour {
 
     //Criado para limitar a rotação da câmera para 90º
+    public bool movimentoCamera;
     public GameObject referencia;
 
 	//Corpo Rígido associado ao objeto controlado pelo jogador
@@ -39,13 +40,20 @@ public class ControladorJogador : MonoBehaviour {
     {
 		//Captura a entrada de controle Horizontal, usando por padrão setas direcionais direita e esquerda e retornando valores de -1 a 1;
         float moveHorizontal = Input.GetAxis("Horizontal");
-		//Captura a entrada de controle Vertical, usando por padrão setas direcionais para cima e para baixo e retornando valores entre -1 e 1; 
+		//Captura a entrada de controle Vertical, usando por padrão setas direcionais para cima e para baixo e retornando valores entre -1 e 1;
         float moveVertical = Input.GetAxis("Vertical");
 		//Captura a entrada de salto, usando por padrão o espaço e retornano 0 ou 1;
 		float jump = Input.GetAxis("Jump");
+    //Atualiza as velociades Horizontal e Vertical;
+    Vector3 direcao;
+    if(movimentoCamera){
+      direcao = new Vector3 (referencia.transform.forward.x * moveVertical, 0, referencia.transform.forward.z * moveVertical);;
+      direcao += new Vector3(referencia.transform.right.x * moveHorizontal, 0, referencia.transform.right.z * moveHorizontal);
+    } else {
+      direcao = new Vector3 (moveHorizontal, 0, moveVertical);
+    }
 
-		//Atualiza as velociades Horizontal e Vertical
-		Vector3 direcao = new Vector3 (moveHorizontal, 0, moveVertical);
+
 		rb.AddForce (direcao * speedFactor);
 		//float speedH = moveHorizontal * speedFactor * Time.deltaTime;
 		//float speedV = moveVertical * speedFactor * Time.deltaTime;
@@ -62,7 +70,7 @@ public class ControladorJogador : MonoBehaviour {
 			isJump = false;
 		}
     }
-		
+
 	//Atualizações dinâmicas
 	void Update () {
 		//Toca uma nota de acordo com a magnitude da velocidade

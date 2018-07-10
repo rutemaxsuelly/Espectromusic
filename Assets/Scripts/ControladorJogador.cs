@@ -76,6 +76,7 @@ public class ControladorJogador : MonoBehaviour {
 		//Toca uma nota de acordo com a magnitude da velocidade
 		float pitch = GetPitch(rb.velocity.sqrMagnitude * audiofactor);
 		LibPD.SendFloat ("numero", pitch);
+    LibPD.SendFloat ("metro", pitch);
 	}
 
 	//Retorna um float calculado com base na frequencia basica, aceleração e escala

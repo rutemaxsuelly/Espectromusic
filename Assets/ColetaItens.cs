@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ColetaItens : MonoBehaviour {
 
+	public Pontuacao pontuacao ;
+
 	// Use this for initialization
 	void Start () {
-		
+		pontuacao = FindObjectOfType<Pontuacao>();
 	}
 	
 	// Update is called once per frame
@@ -17,5 +19,6 @@ public class ColetaItens : MonoBehaviour {
     void OnTriggerEnter (Collider other)
     {
         other.gameObject.SetActive(false);
+		pontuacao.GanharPontos();
     }
 }
